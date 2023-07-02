@@ -9,11 +9,14 @@ let params = new URLSearchParams(url.search);
 let page = params.get("page") || 1;
 
 //All artworks gallery with pages from 1 to 5
-
 let prev = document.getElementById("prev");
 let next = document.getElementById("next");
 
-//Fetching an api response with the following fields: id,title,artist_display,image_id
+
+/**
+ * Fetching an api response with the following fields: id,title,artist_display,image_id
+ * @returns a list of artwork items
+ */
 async function getArtworks() {
     try {
         let url = `https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,image_id&page=${page}`;
@@ -32,6 +35,9 @@ async function getArtworks() {
     }
 }
 
+/**
+ * display the return artworks
+ */
 async function displayArtworks() {
     updateURLParameter("page",page);
 
@@ -53,6 +59,9 @@ async function displayArtworks() {
     }
 }
 
+/**
+ * Update URL with a query param (e.g. example.com?a=1&b=2)
+ */
 function updateURLParameter(key, value) {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
@@ -62,7 +71,9 @@ function updateURLParameter(key, value) {
     window.history.pushState({}, '', `${url.pathname}?${params}`);
 }
 
-
+/**
+ * The entry point for the page
+ */
 async function init() {
     let minPage = 1;
     let maxPage = 5;

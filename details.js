@@ -1,5 +1,9 @@
 //Artwork details page 
 
+/**
+ * 
+ * Load a single item from the API
+ */
 async function getArtwork() {
     // Get the current URL
     let currentURL = window.location.href;
@@ -30,6 +34,9 @@ async function getArtwork() {
 
 } 
 
+/**
+ * Displaying an artwork
+ */
 async function displayArtwork() {
     let html = await getArtwork();
     console.log(html);
